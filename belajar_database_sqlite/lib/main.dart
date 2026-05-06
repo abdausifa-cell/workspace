@@ -223,7 +223,8 @@ class _ListUserDataPageState extends State<ListUserDataPage> {
             onPressed: () async {
               await DatabaseHelper.deleteData(id);
               _reloadData();
-              if (mounted) Navigator.pop(context);
+              if (!context.mounted) return;
+              Navigator.pop(context);
             },
             child: const Text("Hapus", style: TextStyle(color: Colors.red)),
           ),
